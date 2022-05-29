@@ -34,13 +34,13 @@ def BinomialBernoulli(p, n):
 
 # Сам полином
 def Pn(m, p, n):
-    c = math.factorial(n) / (math.factorial(m) * math.factorial(n - m))
+    c = math.gamma(n+1) / (math.gamma(m+1) * math.gamma(n - m+1))
     return c * (p ** m) * ((1 - p) ** (n - m))
 
 
 polinom = []
-for i in range(15):
-    polinom.append(Pn(i, 0.35, 15))
+for i in range(150):
+    polinom.append(Pn(i/10, 0.35, 15))
 
 res = [0] * 15
 y = list(range(15))
@@ -58,5 +58,10 @@ for i in range(len(res)):
     res[i] /= s
 sns.barplot(x=y, y=res, color='red')
 # sns.barplot(x=y, y=polinom, color='blue')
-plt.plot(y, polinom)
+y2 = list(range(150))
+for i in range(len(y2)):
+    y2[i] /= 10
+plt.plot(y2, polinom)
 matplotlib.pyplot.show()
+
+# print(math.gamma(1.5 + 1))

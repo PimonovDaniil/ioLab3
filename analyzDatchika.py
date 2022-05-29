@@ -10,7 +10,7 @@ randomNumbers = []
 x = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 y = [0]*kol_vo_stolbcov
 
-for i in range(100000000):
+for i in range(100000):
     r = rand()
     randomNumbers.append(r)
     for j in range(len(x)):
