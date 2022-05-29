@@ -16,4 +16,4 @@ def rand():
     m = 2147483647
     global seed
     seed = seed * a % m
-    return seed
+    return seed / 2147483647
