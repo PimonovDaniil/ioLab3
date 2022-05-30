@@ -56,12 +56,10 @@ for i in range(100000):
 s = sum(res)
 for i in range(len(res)):
     res[i] /= s
-sns.barplot(x=y, y=res, color='red')
+sns.barplot(x=y, y=res)
 # sns.barplot(x=y, y=polinom, color='blue')
 y2 = list(range(150))
 for i in range(len(y2)):
     y2[i] /= 10
 plt.plot(y2, polinom)
 matplotlib.pyplot.show()
-
-# print(math.gamma(1.5 + 1))
