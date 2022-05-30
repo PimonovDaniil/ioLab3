@@ -3,16 +3,16 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import math
-
-
-def fac(n):
-    if n == 0:
-        return 1
-    return fac(n - 1) * n
-
-
 # https://habr.com/ru/post/265321/
 
+def matOzhid_dispers(x, y):
+    mat_ozhid = 0
+    m_circumflex_2 = 0
+    for i in range(len(x)):
+        mat_ozhid += (x[i] * (y[i] / sum(y)))
+        m_circumflex_2 += ((x[i] ** 2) * (y[i] / sum(y)))
+    dispers = m_circumflex_2 - (mat_ozhid ** 2)
+    return [mat_ozhid, dispers]
 
 def Bernoulli(p):
     boundary = (1 - p)
@@ -61,5 +61,12 @@ sns.barplot(x=y, y=res)
 y2 = list(range(150))
 for i in range(len(y2)):
     y2[i] /= 10
+
+m1, dispers1 = matOzhid_dispers(y2, polinom)
+m2, dispers2 = matOzhid_dispers(y, res)
+print("Мат ожидание биноминального распределения: "+str(m1))
+print("Дисперсия биноминального распределения: "+str(dispers1))
+print("Мат ожидание СВ биноминального распределения: "+str(m2))
+print("Дисперсия СВ биноминального распределения: "+str(dispers2))
 plt.plot(y2, polinom)
 matplotlib.pyplot.show()

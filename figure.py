@@ -14,8 +14,8 @@ def cilindr(x, y, z):
     cubeSize = 10  # ДОЛЖЕН СОВПАДАТЬ С РАЗМЕРОМ КУБА
     radCilindr = 3
     hCilindr = 10
-    rast = math.sqrt((x - (cubeSize / 2)) ** 2 + (y - (cubeSize / 2)) ** 2 + (z - (cubeSize / 2)) ** 2)
-    if rast <= radCilindr and cubeSize <= x <= cubeSize + hCilindr:
+    rast = math.sqrt((x - (cubeSize / 2)) ** 2 + (y - (cubeSize / 2)) ** 2)
+    if rast <= radCilindr and cubeSize <= z <= cubeSize + hCilindr:
         return True
     else:
         return False
