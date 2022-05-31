@@ -1,5 +1,5 @@
 import math
-
+import random
 
 def cube(x, y, z):
     size = 10
@@ -19,3 +19,23 @@ def cilindr(x, y, z):
         return True
     else:
         return False
+
+
+print("Объём фигур аналитически: ", (10 * 10 * 10) + (math.pi * 9 * 10))
+print("Объём пространства в пределах которого генерируем случайные точки: ",20*20*20)
+
+pointIn = 0
+pointOut = 0
+for i in range(10000000):
+    x = random.random() * 20
+    y = random.random() * 20
+    z = random.random() * 20
+    if cube(x, y, z) or cilindr(x, y, z):
+        pointIn += 1
+    else:
+        pointOut += 1
+print("Кол-во точек попало в пределы фигур: ", pointIn)
+print("Кол-во точек не попало в пределы фигур: ", pointOut)
+print("Объём посчитанный методом монте-карла", ((20*20*20)*pointIn)/(pointOut+pointIn))
+
+
