@@ -34,23 +34,26 @@ def cilindrVkube(x, y, z):
 
 
 def monteKarlik(cube, cilindr, vAnal):
+    P = [20, 20, 20]
     print("Объём фигур аналитически: ", vAnal)
-    print("Объём пространства в пределах которого генерируем случайные точки: ", 20 * 20 * 20)
+    print("Объём пространства в пределах которого генерируем случайные точки: ", P[0] * P[1] * P[2])
 
     pointIn = 0
     pointOut = 0
     for i in range(100000):
-        x = random.random() * 20
-        y = random.random() * 20
-        z = random.random() * 20
+        x = random.random() * P[0]
+        y = random.random() * P[1]
+        z = random.random() * P[2]
         if cube(x, y, z) or cilindr(x, y, z):
             pointIn += 1
         else:
             pointOut += 1
     print("Кол-во точек попало в пределы фигур: ", pointIn)
     print("Кол-во точек не попало в пределы фигур: ", pointOut)
-    print("Объём посчитанный методом монте-карла", ((20 * 20 * 20) * pointIn) / (pointOut + pointIn))
-    print("Разница между аналитическим и Монте-Карло", abs((((20 * 20 * 20) * pointIn) / (pointOut + pointIn)) - vAnal))
+    print("Объём посчитанный методом монте-карла", ((P[0] * P[1] * P[2]) * pointIn) / (pointOut + pointIn))
+    print("Разница между аналитическим и Монте-Карло", abs((((P[0] * P[1] * P[2]) * pointIn) / (pointOut + pointIn)) - vAnal))
+    print("Величина относительной среднеквадратической погрешности оценок объема: ",
+          math.sqrt(pointOut / ((pointIn + pointOut) * pointIn)))
 
 
 print("Куб со стороной 10, цилинтр с радиусом 3 и высотой 10")
